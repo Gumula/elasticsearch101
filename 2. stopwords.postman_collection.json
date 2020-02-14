@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "e88be555-5070-4ef5-9fd8-af193107e0bd",
+		"name": "2. stopwords",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sweter z długim rękawem",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": {\n\t\"match\" : {\n            \"title\" : {\n                \"query\" : \"sweter z długim\"\n            }\n        }\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete mapping",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create mapping",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mappings\": {\n        \"properties\": {\n            \"title\": {\"type\": \"text\", \"analyzer\": \"custom_stopwords_hehe\"},\n            \"description\": {\"type\": \"text\"},\n            \"price\": {\"type\": \"integer\"},\n            \"fabric\": {\"type\": \"text\", \"analyzer\": \"custom_stopwords_hehe\"},\n            \"color\": {\"type\": \"text\"},\n            \"note\": {\"type\": \"keyword\", \"index\": false}\n        }\n    },\n    \"settings\": {\n    \t\"analysis\": {\n    \t\t\"analyzer\": {\n        \t\t\"custom_stopwords_hehe\": { \n        \t\t\t\"type\":      \"standard\",\n        \t\t\t\"stopwords\": [\"z\"]\n        \t\t}\n    \t\t}\n    \t}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sweter z długim rękawem again",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": {\n\t\"match\" : {\n            \"title\" : {\n                \"query\" : \"sweter z długim\"\n            }\n        }\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cbabce54-1682-4e93-b5a8-bb28f07690dc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "42e99747-55b9-44ca-9a24-051fe45032a7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

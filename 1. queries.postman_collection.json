@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "43fb55a9-9750-469a-be15-f89569623e49",
+		"name": "1. queries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create mapping",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mappings\": {\n        \"properties\": {\n            \"title\": {\"type\": \"text\"},\n            \"description\": {\"type\": \"text\"},\n            \"price\": {\"type\": \"integer\"},\n            \"fabric\": {\"type\": \"text\"},\n            \"color\": {\"type\": \"text\"},\n            \"note\": {\"type\": \"keyword\", \"index\": false}\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get mapping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mappings\": {\n        \"properties\": {\n            \"id\": {\"type\": \"keyword\", \"index\": false},\n            \"description\": {\"type\": \"text\"},\n            \"price\": {\"type\": \"integer\"},\n            \"fabric\": {\"type\": \"text\"},\n            \"color\": {\"type\": \"text\"}\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_mapping",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_mapping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "count documents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{es}}/products/_count",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search for anything",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sweter",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": {\n\t\"match\" : {\n            \"title\" : {\n                \"query\" : \"sweter\"\n            }\n        }\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sweter z długim rękawem and operator",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": {\n\t\"match\" : {\n            \"title\" : {\n                \"query\" : \"sweter z rękawem\",\n                \"operator\": \"and\"\n            }\n        }\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "match_phrase",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": {\n        \"match_phrase\": {\n            \"title\": {\n                \"query\": \"koszulka z rękawem\"\n            }\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "multi_match",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": {\n        \"multi_match\": {\n            \"query\": \"koszulka wełna owcza\",\n            \"fields\": [\"title\",\"*bric\"]\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query_string",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": {\n        \"query_string\" : {\n            \"query\" : \"(koszulka) OR (sweter z *im rękawem)\",\n            \"default_field\" : \"title\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "term suggester",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \n  \"suggest\" : {\n    \"my-suggestion\" : {\n      \"text\" : \"kurka zimowa\",\n      \"term\" : {\n        \"field\" : \"title\"\n      }\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "572b0e35-a181-4b59-a94b-d9d4671f207a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ffd3d71d-4810-4c23-9122-4b4237b89687",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "ff8e2834-158c-4c48-a194-35e3a7ea2ed9",
+			"key": "es",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

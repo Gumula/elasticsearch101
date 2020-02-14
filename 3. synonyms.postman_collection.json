@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "c6645d8c-c2b3-470d-b5d5-107d876b2ebf",
+		"name": "3. synonyms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "krokodyl",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": {\n\t\"match\" : {\n            \"title\" : {\n                \"query\" : \"krokodyl\"\n            }\n        }\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete mapping",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create mapping",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mappings\": {\n        \"properties\": {\n            \"title\": {\"type\": \"text\", \"analyzer\": \"custom_synonym_stopword_hehe\"},\n            \"description\": {\"type\": \"text\"},\n            \"price\": {\"type\": \"integer\"},\n            \"fabric\": {\"type\": \"text\"},\n            \"color\": {\"type\": \"text\"},\n            \"note\": {\"type\": \"keyword\", \"index\": false}\n        }\n    },\n    \"settings\": {\n    \t\"index\" : {\n\t\t\t\"analysis\" : {\n                \"analyzer\" : {\n                    \"custom_synonym_stopword_hehe\" : {\n                        \"tokenizer\" : \"standard\",\n                        \"filter\" : [\"lowercase\", \"stop_hehe\", \"synonym_hehe\"]\n                    }\n                },\n                \"filter\" : {\n                    \"stop_hehe\": {\n                        \"type\" : \"stop\",\n                        \"stopwords\": [\"z\"]\n                    },\n                    \"synonym_hehe\" : {\n                        \"type\" : \"synonym\",\n                        \"synonyms\" : [\"krokodyl, płot, sweter\", \"surykatka, owczarek niemiecki, strój\"]\n                    }\n                }\n            }\n    \t}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "krokodyl again",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": {\n\t\t\"match\" : {\n            \"title\" : {\n                \"query\" : \"krokodyl\"\n            }\n        }\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{es}}/products/_search",
+					"host": [
+						"{{es}}"
+					],
+					"path": [
+						"products",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cbabce54-1682-4e93-b5a8-bb28f07690dc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "42e99747-55b9-44ca-9a24-051fe45032a7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
