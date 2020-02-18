@@ -6,40 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "kurka zimiowa",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"query\": {\n\t\t\"match\" : {\n            \"title\" : {\n                \"query\" : \"kurka zimiowa\"\n            }\n        }\n\t}\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{es}}/products/_search",
-					"host": [
-						"{{es}}"
-					],
-					"path": [
-						"products",
-						"_search"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "delete mapping",
 			"request": {
 				"method": "DELETE",
@@ -108,75 +74,7 @@
 			"response": []
 		},
 		{
-			"name": "kurka zimiowa again",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"query\": {\n\t\t\"match\" : {\n            \"title\" : {\n                \"query\" : \"kurka zimiowa\"\n            }\n        }\n\t}\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{es}}/products/_search",
-					"host": [
-						"{{es}}"
-					],
-					"path": [
-						"products",
-						"_search"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "kurka zimiowa suggest properly",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"suggest\": {\n    \"text\": \"kurka zimiowa\",\n    \"phrase_suggester\": {\n      \"phrase\": {\n        \"field\": \"title\",\n        \n        \"direct_generator\": [\n          {\n            \"field\": \"title\"\n          }\n        ]\n      }\n    }\n  }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{es}}/products/_search",
-					"host": [
-						"{{es}}"
-					],
-					"path": [
-						"products",
-						"_search"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "kurka zimiowa with suggestion query",
+			"name": "kurka zimowa with suggestion query",
 			"request": {
 				"method": "POST",
 				"header": [
