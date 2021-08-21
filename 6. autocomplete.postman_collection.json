@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "stró",
+			"name": "swims",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"query\": {\n\t\t\"match\" : {\n            \"title\" : {\n                \"query\" : \"stró\"\n            }\n        }\n\t}\n}",
+					"raw": "{\n\t\"query\": {\n\t\t\"match\" : {\n            \"title\" : {\n                \"query\" : \"swims\"\n            }\n        }\n\t}\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -75,6 +75,34 @@
 		},
 		{
 			"name": "create mapping",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let products = JSON.parse(pm.globals.get(\"products\"));",
+							"",
+							"for (var i = 0; i < products.length; i++) {",
+							"    let product = products[i];",
+							"    pm.sendRequest({",
+							"       url: pm.globals.get(\"es\") + \"/products/_doc\",",
+							"       method: 'POST',",
+							"       header: {",
+							"           'content-type': 'application/json'",
+							"       },",
+							"       body: {",
+							"        mode: 'raw',",
+							"         raw: JSON.stringify(product)",
+							"       }",
+							"    }, function (err, res) {",
+							"       console.log(res);",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -108,7 +136,7 @@
 			"response": []
 		},
 		{
-			"name": "create mapping Copy",
+			"name": "get mapping",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -145,7 +173,7 @@
 			"response": []
 		},
 		{
-			"name": "stró with autocomplete",
+			"name": "swims with autocomplete",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -158,7 +186,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"query\": {\n    \"multi_match\": {\n      \"query\": \"stró\",\n      \"type\": \"bool_prefix\",\n      \"fields\": [\n        \"title\",\n        \"title._2gram\",\n        \"title._3gram\"\n      ]\n    }\n  }\n}",
+					"raw": "{\n  \"query\": {\n    \"multi_match\": {\n      \"query\": \"swims\",\n      \"type\": \"bool_prefix\",\n      \"fields\": [\n        \"title\",\n        \"title._2gram\",\n        \"title._3gram\"\n      ]\n    }\n  }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -183,7 +211,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "cbabce54-1682-4e93-b5a8-bb28f07690dc",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -193,13 +220,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "42e99747-55b9-44ca-9a24-051fe45032a7",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

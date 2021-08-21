@@ -1,36 +1,42 @@
 import requests
 
 products = [
-    {"title": "Sweter z długim rękawem",
+    {"title": "sweater with long sleeves",
      "description": "Lorem ipsum",
      "price": 100,
-     "fabric": "wełna owcza",
-     "color": "biały"
+     "fabric": "lamb wool",
+     "color": "white"
      },
-    {"title": "koszulka z krótkim rękawem",
+	{"title": "sweater with amazing sleeves",
+     "description": "Lorem ipsum",
+     "price": 100,
+     "fabric": "lamb wool",
+     "color": "white"
+     },
+    {"title": "shirt with short sleeves",
      "description": "Lorem ipsum",
      "price": 40,
-     "fabric": "bawełna",
-     "color": "czerwony"
+     "fabric": "cotton",
+     "color": "red"
      },
-    {"title": "strój kąpielowy jednoczęściowy",
+    {"title": "one piece swimsuit",
      "description": "Lorem ipsum",
      "price": 120,
-     "fabric": "baby alpaka",
-     "color": "zielony"
+     "fabric": "baby alpaca",
+     "color": "green"
      },
-    {"title": "strój kąpielowy dwuczęściowy",
+    {"title": "two piece swimsuit",
      "description": "Lorem ipsum",
      "price": 140,
-     "fabric": "baby alpaka",
-     "color": "czerwony"
+     "fabric": "baby alpaca",
+     "color": "red"
      },
-    {"title": "kurtka zimowa z kapturem",
-     "description": "kurtka zimowa zrobiona na drutach podczas długich zimowych wieczorów",
+    {"title": "winter coat with hood",
+     "description": "winter coat knitted during long winter nights",
      "price": 120,
-     "fabric": "wełna owcza połyskująca na niebiesko",
-     "color": "żółty"
-     },
+     "fabric": "lamb wool shining in blue",
+     "color": "yellow"
+     }
 ]
 
 for product in products:
