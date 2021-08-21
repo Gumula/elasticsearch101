@@ -1,0 +1,19 @@
+{
+	"id": "146e52f0-fd32-4814-8e58-8a3c0f4d5eb7",
+	"values": [
+		{
+			"key": "es",
+			"value": "http://localhost:9200",
+			"enabled": true
+		},
+		{
+			"key": "products",
+			"value": "[\n    {\"title\": \"sweater with long sleeves\",\n     \"description\": \"Lorem ipsum\",\n     \"price\": 100,\n     \"fabric\": \"lamb wool\",\n     \"color\": \"white\"\n     },\n\t{\"title\": \"sweater with amazing sleeves\",\n     \"description\": \"Lorem ipsum\",\n     \"price\": 100,\n     \"fabric\": \"lamb wool\",\n     \"color\": \"white\"\n     },\n    {\"title\": \"shirt with short sleeves\",\n     \"description\": \"Lorem ipsum\",\n     \"price\": 40,\n     \"fabric\": \"cotton\",\n     \"color\": \"red\"\n     },\n    {\"title\": \"one piece swimsuit\",\n     \"description\": \"Lorem ipsum\",\n     \"price\": 120,\n     \"fabric\": \"baby alpaca\",\n     \"color\": \"green\"\n     },\n    {\"title\": \"two piece swimsuit\",\n     \"description\": \"Lorem ipsum\",\n     \"price\": 140,\n     \"fabric\": \"baby alpaca\",\n     \"color\": \"red\"\n     },\n    {\"title\": \"winter coat with hood\",\n     \"description\": \"winter coat knitted during long winter nights\",\n     \"price\": 120,\n     \"fabric\": \"lamb wool shining in blue\",\n     \"color\": \"yellow\"\n     }\n]",
+			"enabled": true
+		}
+	],
+	"name": "My Workspace Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2021-08-21T13:28:14.362Z",
+	"_postman_exported_using": "Postman/8.6.1"
+}
